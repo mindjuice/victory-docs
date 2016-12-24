@@ -40,7 +40,7 @@
     "ecology": "^1.6.0",
     "formidable-landers": "^6.0.1",
     "history": "^3.0.0",
-    "lodash": "^4.6.1",
+    "lodash": "^4.17.3",
     "markdown-it": "^8.0.0",
     "markdown-it-toc-and-anchor": "^4.1.1",
     "marked": "^0.3.5",
