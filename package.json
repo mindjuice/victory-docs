@@ -34,7 +34,7 @@
   "dependencies": {
     "anchorate": "^1.1.0",
     "babel-preset-stage-1": "^6.5.0",
-    "builder": "^3.1.0",
+    "builder": "^3.2.2",
     "builder-docs-archetype": "^6.0.0",
     "chai": "^3.2.0",
     "ecology": "^1.6.0",
