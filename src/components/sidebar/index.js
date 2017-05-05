@@ -78,7 +78,7 @@ class Sidebar extends React.Component {
 
     return (
       <div className="Sidebar-Grid">
-        <p className="Sidebar-Heading u-noMargin u-noPadding">
+        <p className="Sidebar-Heading u-noPadding">
           Introduction
         </p>
         <ul className="Sidebar-List">
