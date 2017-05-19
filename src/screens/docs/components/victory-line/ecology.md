@@ -6,7 +6,7 @@ VictoryLine renders a dataset as a single line. VictoryLine can be composed with
 
 ### data
 
-Specify data via the `data` prop. By default, Victory components expect data as an array of objects with `x` and `y` properties. Use the [x and y] data accessor props to define a custom data format. The `data` prop must be given as an array.
+Specify data via the `data` prop. By default, Victory components expect data as an array of objects with `x` and `y` properties. Use the [`x` and `y`] data accessor props to define a custom data format. The `data` prop must be given as an array.
 
 ```jsx
 <VictoryLine
@@ -60,7 +60,7 @@ y as a function of x. The `samples` prop is ignored if `data` is supplied in pro
 
 ### categories
 
-The `categories` prop specifies how categorical data for a chart should be ordered. This prop should be given as an array of string values, or an object with these arrays of values specified for x and y. If this prop is not set, categorical data will be plotted in the order it was given in the data array.
+The `categories` prop specifies how categorical data for a chart should be ordered. This prop should be given as an array of string values, or an object with these arrays of values specified for `x` and `y`. If this prop is not set, categorical data will be plotted in the order it was given in the data array.
 
 *examples:* `categories={["dogs", "cats", "mice"]}`
 
@@ -84,7 +84,7 @@ style={{
 
 ### theme
 
-The `theme` prop specifies a theme to use for determining styles and layout properties for a component. Any styles or props defined in `theme` may be overwritten by props specified on the component instance. By default, components use a [grayscale theme]. [Read more about themes here].
+The `theme` prop specifies a theme to use for determining styles and layout props for a component. Any styles or props defined in `theme` may be overridden by props specified on the component instance. By default, components use a [grayscale theme]. [Read more about themes here].
 
 *default:* `theme={VictoryTheme.grayscale}`
 
@@ -97,7 +97,7 @@ The `width` and `height` props determine the width and height of the containing 
 
 ### padding
 
-The `padding` prop specifies the amount of padding in number of pixels between the edge of the chart and any rendered child components. This prop can be given as a number or as an object with padding specified for top, bottom, left and right. As with [width and height], the absolute padding will depend on whether the component is rendered in a responsive container. When a component is nested within `VictoryChart`, `VictoryStack`, or `VictoryGroup` setting `padding` on the child component will have no effect.
+The `padding` prop specifies the amount of padding in number of pixels between the edge of the chart and any rendered child components. This prop can be given as a number or as an object with padding specified for top, bottom, left and right. As with [`width` and `height`], the absolute padding will depend on whether the component is rendered in a responsive container. When a component is nested within `VictoryChart`, `VictoryStack`, or `VictoryGroup` setting `padding` on the child component will have no effect.
 
 *examples:* `padding={{top: 20, bottom: 60}}` or `padding={40}`
 
@@ -153,7 +153,7 @@ The `labels` prop defines the labels that will appear above each point. This pro
 
 ### labelComponent
 
-The `labelComponent` prop takes a component instance which will be used to render a label for the line. The new element created from the passed `labelComponent` will be supplied with the following properties: x, y, index, data, verticalAnchor, textAnchor, angle, style, text, and events. Any of these props may be overridden by passing in props to the supplied component, or modified or ignored within the custom component itself. If `labelComponent` is omitted, a new [VictoryLabel] will be created with props described above. This `labelComponent` prop should be used to provide a series label for `VictoryLine`. If individual labels are required for each data point, they should be created by composing `VictoryLine` with `VictoryScatter`.
+The `labelComponent` prop takes a component instance which will be used to render a label for the line. The new element created from the passed `labelComponent` will be supplied with the following props: `x`, `y`, `index`, `data`, `verticalAnchor`, `textAnchor`, `angle`, `style`, `text`, and `events`. Any of these props may be overridden by passing in props to the supplied component, or modified or ignored within the custom component itself. If `labelComponent` is omitted, a new [VictoryLabel] will be created with props described above. This `labelComponent` prop should be used to provide a series label for `VictoryLine`. If individual labels are required for each data point, they should be created by composing `VictoryLine` with `VictoryScatter`.
 
 *examples:* `labelComponent={<VictoryLabel dy={20}/>}`, `labelComponent={<MyCustomLabel/>}`
 
@@ -161,10 +161,9 @@ The `labelComponent` prop takes a component instance which will be used to rende
 
 ### dataComponent
 
-The `dataComponent` prop takes a component instance which will be responsible for rendering a data element. The new element created from the passed `dataComponent` will be provided with the following properties calculated by `VictoryLine`: a scale, style, events, interpolation, and an array of modified data objects (including x, y, and calculated y0 and y1). Any of these props may be overridden by passing in props to the supplied component, or modified or ignored within the custom component itself. If a dataComponent is not provided, `VictoryLine` will use its default [Curve component].
+The `dataComponent` prop takes a component instance which will be responsible for rendering a data element. The new element created from the passed `dataComponent` will be provided with the following propes calculated by `VictoryLine`: a `scale`, `style`, `events`, `interpolation`, and an array of modified data objects (including `x`, `y`, and calculated `y0` and `y1`). Any of these props may be overridden by passing in props to the supplied component, or modified or ignored within the custom component itself. If a `dataComponent` is not provided, `VictoryLine` will use its default [Curve component].
 
 *examples:* `dataComponent={<Curve events={{onClick: () => console.log("wow")}}/>}`, `dataComponent={<MyCustomCurve/>}`
-
 
 *default:* `<Curve/>`
 
@@ -184,13 +183,13 @@ The `groupComponent` prop takes a component instance which will be used to creat
 
 ### animate
 
-The `animate` prop specifies props for [VictoryAnimation] and [VictoryTransition] to use. The animate prop may be used to specify the duration, delay and easing of an animation as well as the behavior of `onEnter` and `onExit` and `onLoad` transitions. Each Victory component defines its own default transitions, be these may be modified, or overwritten with the `animate` prop.
+The `animate` prop specifies props for [VictoryAnimation] and [VictoryTransition] to use. The animate prop may be used to specify the duration, delay and easing of an animation as well as the behavior of `onEnter` and `onExit` and `onLoad` transitions. Each Victory component defines its own default transitions, be these may be modified, or overridden with the `animate` prop.
 
 *examples:* `animate={{duration: 2000, onLoad: {duration: 1000}, onEnter: {duration: 500, before: () => ({y: 0})})}`
 
 ### events
 
-The `events` prop takes an array of event objects. Event objects are composed of a `target`, an `eventKey`, and `eventHandlers`. Targets may be any valid style namespace for a given component, so "data" and "labels" are valid targets for this component. Since VictoryLine only renders a single element, the `eventKey` property is not used. The `eventHandlers` object should be given as an object whose keys are standard event names (i.e. `onClick`) and whose values are event callbacks. The return value of an event handler is used to modify elemnts. The return value should be given as an object or an array of objects with optional `target` and `eventKey` keys for specifying the element(s) to be modified, and a `mutation` key whose value is a function. The `target` and `eventKey` keys will default to those corresponding to the element the event handler was attached to. The `mutation` function will be called with the calculated props for each element that should be modified (i.e. a line), and the object returned from the mutation function will override the props of that element via object assignment.
+The `events` prop takes an array of event objects. Event objects are composed of a `target`, an `eventKey`, and `eventHandlers`. Targets may be any valid style namespace for a given component, so "data" and "labels" are valid targets for this component. Since VictoryLine only renders a single element, the `eventKey` property is not used. The `eventHandlers` object should be given as an object whose keys are standard event names (_e.g.,_ `onClick`) and whose values are event callbacks. The return value of an event handler is used to modify elemnts. The return value should be given as an object or an array of objects with optional `target` and `eventKey` keys for specifying the element(s) to be modified, and a `mutation` key whose value is a function. The `target` and `eventKey` keys will default to those corresponding to the element the event handler was attached to. The `mutation` function will be called with the calculated props for each element that should be modified (_e.g.,_ a line), and the object returned from the mutation function will override the props of that element via object assignment.
 
 *examples:*
 ```jsx
@@ -224,7 +223,7 @@ The `events` prop takes an array of event objects. Event objects are composed of
 
 ### eventKey
 
-The `eventKey` prop is used to assign eventKeys to data. This prop operates identically to the [x] and [y] data accessor props. By default, the eventKey of each datum will be equal to its index in the data array.
+The `eventKey` prop is used to assign `eventKeys` to data. This prop operates identically to the [`x` and `y`] data accessor props. By default, the `eventKey` of each datum will be equal to its index in the data array.
 
 ### sharedEvents
 
@@ -236,10 +235,10 @@ The `name` prop is used to reference a component instance when defining shared e
 
 
 [VictoryChart]: https://formidable.com/open-source/victory/docs/victory-chart
-[x and y]: https://formidable.com/open-source/victory/docs/victory-line#x-and-y
+[`x` and `y`]: https://formidable.com/open-source/victory/docs/victory-line#x-and-y
 [grayscale theme]: https://github.com/FormidableLabs/victory-core/blob/master/src/victory-theme/grayscale.js
 [Read more about themes here]: https://formidable.com/open-source/victory/guides/themes
-[width and height]: https://formidable.com/open-source/victory/docs/victory-line#width-and-height
+[`width` and `height`]: https://formidable.com/open-source/victory/docs/victory-line#width-and-height
 [Curve component]: https://formidable.com/open-source/victory/docs/victory-primitives#curve
 [VictoryLabel]: https://formidable.com/open-source/victory/docs/victory-label
 [VictoryPortal]: https://formidable.com/open-source/victory/docs/victory-portal
